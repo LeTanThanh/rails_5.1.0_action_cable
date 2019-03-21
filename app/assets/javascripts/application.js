@@ -14,3 +14,14 @@
 //= require turbolinks
 //= require jquery
 //= require_tree .
+
+(function() {
+  App.web_notifications = App.cable.subscriptions.create("WebNotificationsChannel", {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      $('#messages').append(data['message']);
+    }
+  });
+
+}).call(this);
